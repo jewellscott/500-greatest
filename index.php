@@ -12,7 +12,7 @@
 </head>
 <body>
 
-	<?php include('templates/partials/site-header.php'); ?>
+	<?php include('templates/partials/site-header/template.php'); ?>
 
 	<main>
 		<inner-column>

@@ -4,7 +4,7 @@
 
 <?php if ($isLoggedIn) { ?>
 
-	Show the latest album you randomized, and the option to generate another.
+	Show the latest album you randomized, and the option to generate another. Maybe also show the percentage completed. 
 
 <?php } else { ?>
 
