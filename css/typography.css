@@ -1,0 +1,81 @@
+/* not permanent */
+
+body {
+	font-family: sans-serif;
+}
+
+h1 {
+	font-size: 64px;
+	font-weight: bold;
+}
+
+
+h2 {
+	font-size: 48px;
+	font-weight: bold;
+}
+
+
+h3 {
+	font-size: 32px;
+	font-weight: bold;
+}
+
+
+h4 {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+
+h5 {
+	font-size: 16px;
+	text-transform: italic;
+}
+
+main {
+	h1 {
+		margin-bottom: 2rem;
+	}
+}
+
+album-card {
+	h2 {
+		font-size: 24px;
+	}
+	h3 {
+		font-size: 16px;
+	}
+	h4 {
+		font-size: 16px;
+		font-weight: 400;
+	}
+}
+
+album-detail {
+
+	.rank {
+		font-size: 64px;
+		font-weight: bold;
+		margin-bottom: unset;
+	}
+
+	album-stats {
+		.title {
+			font-size: clamp(2rem, 3.5vw, 64px); 
+		}
+		.artist {
+			font-size: clamp(1.5rem, 2.5vw, 48px); 
+		}
+		.year {
+			font-size: clamp(1.2rem, 1.5vw, 32px); 
+		}
+	}
+}
+
+	album-description {
+		font-size: 1.2rem;
+		font-weight: 300;
+		line-height: 2rem;
+	}
+}

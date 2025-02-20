@@ -1,0 +1,59 @@
+@import 'reset.css';
+@import 'setup.css';
+@import 'settings.css';
+@import 'structure.css';
+@import 'typography.css';
+@import 'components.css';
+@import 'modules.css';
+
+
+
+header a.site-logo {
+	display: block;
+	font-size: 48px;
+	font-weight: 700;
+	padding-block: 10px;
+}
+
+.site-menu {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	justify-content: space-between;
+	padding-block: 1em;
+
+	a {
+		/* I want to add padding 
+		(for visual effect and clicking space, 
+		but I don't want the vertical alignment 
+		on the left to be messed up... */
+/*		padding: 1em;*/
+	}
+
+	a.active {
+		text-decoration: underline;
+/*		border-bottom: 2px solid black;*/
+	}
+
+	.list-filters, .user-menu {
+		display: flex;
+		gap: 20px;
+		align-items: center;
+	}
+
+	.rs-500, .nav-label, .my-albums, .add-album {
+		font-weight: 700;
+	}
+
+}
+
+@media (width > 800px) {
+
+	header, .site-menu {
+		gap: 0;
+		flex-direction: row
+	}
+}
+
+
+
