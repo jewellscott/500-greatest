@@ -27,8 +27,6 @@
 		$page = "home";
 	}
 
-	// update this to have the logged in thing. only show the home page and the full list of 500. - basically i need two separate headers
-
 	function getTemplate($page) {
-		include($page . '.php');
+		include("pages/$page.php");
 	};

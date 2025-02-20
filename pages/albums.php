@@ -39,7 +39,7 @@
 	<?php foreach ($albums as $album) { ?>
 		<li class="album">
 
-			<?php include('modules/album-card/template.php'); ?>
+			<?php include('templates/modules/album-card/template.php'); ?>
 
 		</li>
 	<?php } ?>
