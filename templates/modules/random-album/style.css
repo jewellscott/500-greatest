@@ -1,0 +1,8 @@
+random-album {
+	display: grid;
+	justify-content: center;
+
+	album-card {
+		max-width: 500px;
+	}
+}
