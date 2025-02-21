@@ -1,7 +1,8 @@
 /*@import '../modules/album-card/style.css';*/
 
-@import '../templates/modules/mast-head/style.css';
+@import '../templates/partials/mast-head/style.css';
 
+@import '../templates/modules/random-album/style.css';
 
 
 album-card {

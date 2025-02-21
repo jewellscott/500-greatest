@@ -1,7 +1,7 @@
 <header class="site-header">
 
 		<inner-column>
-			<?php include('templates/modules/mast-head/template.php'); ?>
+			<?php include('templates/partials/mast-head/template.php'); ?>
 			
 			<!-- <span class="query"><?php echo $_SERVER["QUERY_STRING"]; ?></span> -->
 
