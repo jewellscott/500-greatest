@@ -2,6 +2,7 @@
 
 <?php require('router.php'); ?>
 <?php require('functions.php'); ?>
+<?php // include('db.php'); ?>
 
 <html lang="en">
 <head>
