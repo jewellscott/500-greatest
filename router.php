@@ -12,6 +12,9 @@
 	        $_SESSION['isLoggedIn'] = false;
 	        $isLoggedIn = false;
 	    }
+
+	    header("Location: ?page=home");
+        exit();
 	}
 
  ?>

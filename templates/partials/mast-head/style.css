@@ -1,5 +1,5 @@
 mast-head {
-	nav {
+	nav, user-login {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;

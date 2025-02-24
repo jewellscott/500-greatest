@@ -6,6 +6,9 @@
 @import '../templates/components/album-card/style.css';
 @import '../templates/components/album-row/style.css';
 
+@import '../templates/forms/sign-up/style.css';
+@import '../templates/forms/login/style.css';
+
 @import '../templates/modules/random-album/style.css';
 @import '../templates/modules/album-review/style.css';
 @import '../templates/modules/album-row/style.css';
