@@ -41,7 +41,7 @@ header a.site-logo {
 		align-items: center;
 	}
 
-	.rs-500, .nav-label, .my-albums, .add-album {
+	.rs-500, .nav-label, .history, .stats {
 		font-weight: 700;
 	}
 

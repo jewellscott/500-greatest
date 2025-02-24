@@ -1,9 +1,16 @@
-/*@import '../modules/album-card/style.css';*/
+@import '../modules/components/album-card/style.css';
 
 @import '../templates/partials/mast-head/style.css';
 
+
+
+
+@import '../templates/views/album-grid/style.css';
+@import '../templates/views/album-list/style.css';
+
 @import '../templates/modules/random-album/style.css';
 @import '../templates/modules/album-review/style.css';
+@import '../templates/modules/album-row/style.css';
 
 
 album-card {
@@ -16,12 +23,6 @@ album-card {
 
 	/*padding: 20px;
 	background-color: #eeeeee;*/
-}
-
-.album-list {
-	display: grid;
-	gap: 40px 20px;
-	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
 album-detail {

@@ -34,13 +34,4 @@
 
 <h1>Albums</h1>
 
-<ul class="album-list">
-
-	<?php foreach ($albums as $album) { ?>
-		<li class="album">
-
-			<?php include('templates/modules/album-card/template.php'); ?>
-
-		</li>
-	<?php } ?>
-</ul>
+<?php include('templates/views/album-grid/template.php'); ?>

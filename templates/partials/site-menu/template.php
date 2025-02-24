@@ -19,8 +19,8 @@
 		</nav>
 
 		<nav class="user-menu">
-			<a href="?page=my-albums" class="my-albums <?php if ($page == 'my-albums') {echo 'active';} ?>">My Albums</a>
-			<a href="?page=add-album" class="add-album <?php if ($page == 'add-album') {echo 'active';} ?>">+ Add Album</a>
+			<a href="?page=history" class="history <?php if ($page == 'history') {echo 'active';} ?>">History</a>
+			<a href="?page=stats" class="stats <?php if ($page == 'stats') {echo 'active';} ?>">Stats</a>
 		</nav>
 	</nav>
 </site-menu>

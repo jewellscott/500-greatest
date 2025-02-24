@@ -1,0 +1,13 @@
+album-row {
+
+	h2 {
+		font-size: 24px;
+	}
+	h3 {
+		font-size: 16px;
+	}
+	h4 {
+		font-size: 16px;
+		font-weight: 400;
+	}
+}

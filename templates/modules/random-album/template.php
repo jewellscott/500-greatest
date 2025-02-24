@@ -41,7 +41,7 @@
  ?>
 
  <random-album>
- 	<?php include('templates/modules/album-card/template.php'); ?>
+ 	<?php include('templates/components/album-card/template.php'); ?>
 
  	<form method="POST" class="album-actions">
  		<button type="submit" name="get-random" action="">Randomize</button>
