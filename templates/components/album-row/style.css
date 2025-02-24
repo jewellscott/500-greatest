@@ -1,13 +1,27 @@
 album-row {
+	a {
 
-	h2 {
-		font-size: 24px;
+		img {
+			max-width: 100px;
+		}
+
+		display: flex;
+		gap: 2rem;
+		padding: .5rem;
+
+		align-items: center;
+		justify-content: space-between;
 	}
-	h3 {
-		font-size: 16px;
-	}
-	h4 {
-		font-size: 16px;
+
+
+	h2, h3, h4 {
+		font-size: 1rem;
 		font-weight: 400;
 	}
+
+	.title, .rank, .artist {
+		font-weight: 700;
+	}
+
+	text-align: center;
 }

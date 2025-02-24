@@ -7,23 +7,26 @@
 	}
 	?>
 
-	<!-- change ranks to ids --> 
 	<a href='?page=album&album=<?=$album["id"]?>'>
 
-		<!-- make an if statement (if custom, no rank) -->
-
-		<?php if (isset($album["rank"])) { ?>
-			<h2 class="rank"><?=$rank?></h2>
-		<?php };?>
 		<picture>
 			<img 
 			src="<?=$album["coverUrl"]?>" 
 			alt="<?=$album["title"]?>, <?=$album["artist"]?>">
 		</picture>
 
+		<listening-stats>
+			<p>#<?=$rank?></p>
+			<p>February 24, 2025</p>
+		</listening-stats>
+	
+		<h2 class="rank"><?=$rank?></h2>
 		<h2 class="title"><?=$album["title"]?></h2>
 		<h3 class="artist"><?=$album["artist"]?></h3>
 		<h4 class="year"><?=$album["year"]?></h4>
+		<p class="rating">⭐️⭐️⭐️⭐️⭐️</p>
+		<p class="review">Review (link)</p>
+
 	</a>
 
 </album-row>

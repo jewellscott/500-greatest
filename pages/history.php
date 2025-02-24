@@ -8,4 +8,4 @@
 
 <h1>History</h1>
 
-<?php include('templates/modules/album-list/template.php'); ?>
+<?php include('templates/views/album-list/template.php'); ?>
