@@ -1,5 +1,4 @@
-album-detail {
-	background-color: green;
+album-review {
 
 	album-content {
 		* {
@@ -11,6 +10,30 @@ album-detail {
 /*    	border-bottom: 5px solid rgba(0, 0, 0, .05);*/
 		.year {
 			margin-bottom: 1rem;
+		}
+	}
+
+	.rating-review {
+		overflow-y: scroll;
+		padding: 0;
+
+		album-rating, album-review {
+			display: grid;
+			gap: 10px;
+			padding-right: 1rem;
+		}
+
+		album-rating {
+			max-width: 80%;
+			place-self: center;
+		}
+
+		album-review {
+			display: grid;
+			textarea {
+				border: 2px solid black;
+				resize: vertical;
+			}
 		}
 	}
 }
@@ -31,16 +54,10 @@ album-detail {
 
 		.right {
 			display: grid;
-			gap: 40px;
-			align-content: space-between;
-			aspect-ratio: 1 / 1;
+ 			aspect-ratio: 1 / 1;
 
 			album-stats {
 				margin: unset;
-			}
-
-			album-description {
-				overflow-y: scroll;
 			}
 		}
 	}

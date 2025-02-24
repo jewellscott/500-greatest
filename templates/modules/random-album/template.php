@@ -43,7 +43,8 @@
  <random-album>
  	<?php include('templates/modules/album-card/template.php'); ?>
 
- 	<form method="POST">
+ 	<form method="POST" class="album-actions">
  		<button type="submit" name="get-random" action="">Randomize</button>
+ 		<a href="?page=review&album=<?=$album['id']?>"class="rate-review">Rate and Review <?=$album['title']?></a>
  	</form>
  </random-album>
