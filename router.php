@@ -8,6 +8,13 @@
 		if (isset($_POST['login'])) {
 	        $_SESSION['isLoggedIn'] = true;
 	        $isLoggedIn = true;
+
+
+
+	        $_SESSION["user"] = 1;
+
+
+
         	  header("Location: ?page=home");
         	  exit();
 

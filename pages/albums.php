@@ -1,7 +1,12 @@
 <?php 
 
-	$albums = file_get_contents('data/albums.json');
-	$albums = json_decode($albums, true);
+	global $db;
+
+	// $albums = file_get_contents('data/albums.json');
+	// $albums = json_decode($albums, true);
+
+	$albums = $db->query("SELECT * FROM albums")->fetchAll();
+
 
 	function sortByKey($albums, $key) {
 		$copy = $albums;

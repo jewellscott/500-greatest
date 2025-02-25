@@ -15,6 +15,18 @@
 	           <user-login>
 
 	           <?php if ($isLoggedIn) {?>
+	           		<?php 
+
+	           			$user = $db->query("
+	           				SELECT email FROM users 
+	           				WHERE id == $_SESSION[user]")->fetch();
+
+	           			// var_dump($user);
+
+	           			echo($user["email"]);
+	           			// eventually this will be a component link to a user settings page
+
+	           		 ?>
 					<form method="POST">
 	              		<button type="submit" name="logout">Logout</button>
 					</form>
