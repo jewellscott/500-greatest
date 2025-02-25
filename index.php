@@ -2,7 +2,16 @@
 
 <?php require('router.php'); ?>
 <?php require('functions.php'); ?>
+<?php require('db-helpers.php'); ?>
+
 <?php // include('db.php'); ?>
+
+<?php 
+
+	$db = getDatabaseConnection();
+	initializeDatabase($db);
+
+ ?>
 
 <html lang="en">
 <head>

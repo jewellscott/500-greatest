@@ -8,13 +8,15 @@
 		if (isset($_POST['login'])) {
 	        $_SESSION['isLoggedIn'] = true;
 	        $isLoggedIn = true;
+        	  header("Location: ?page=home");
+        	  exit();
+
 	    } elseif (isset($_POST['logout'])) {
 	        $_SESSION['isLoggedIn'] = false;
 	        $isLoggedIn = false;
+	        header("Location: ?page=home");
+        	  exit();
 	    }
-
-	    header("Location: ?page=home");
-        exit();
 	}
 
  ?>
