@@ -4,8 +4,6 @@
 <?php require('functions.php'); ?>
 <?php require('db-helpers.php'); ?>
 
-<?php // include('db.php'); ?>
-
 <?php 
 
 	$db = getDatabaseConnection();

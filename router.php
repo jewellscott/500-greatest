@@ -16,7 +16,9 @@
 
 	        $_SESSION["user"] = 1;
 
-
+  				$user = $db->query("
+  				SELECT * FROM users 
+  				WHERE id == $_SESSION[user]")->fetch();
 
         	  header("Location: ?page=home");
         	  exit();

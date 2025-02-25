@@ -81,3 +81,7 @@ function postForm($name) {
 	// there are other request types, so - it's nice
 	// to make sure you aren't just assuming what it is
 }
+
+function createReview($db, $albumId, $userId, $rating, $review) {
+	$db->exec("INSERT INTO reviews (album_id, user_id, rating, review, created) VALUES ('$albumId', '$userId', '$rating', '$review', CURRENT_TIMESTAMP)");
+}

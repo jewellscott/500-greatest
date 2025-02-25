@@ -18,7 +18,7 @@
 	           		<?php 
 
 	           			$user = $db->query("
-	           				SELECT email FROM users 
+	           				SELECT * FROM users 
 	           				WHERE id == $_SESSION[user]")->fetch();
 
 	           			// var_dump($user);
