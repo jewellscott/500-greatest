@@ -1,9 +1,6 @@
 <?php 
-
-	$db = getDatabaseConnection();
-
-	// i have to call this on every page. should be on every module that uses the database or should i put it in the header somewhere
-
+	
+	global $db;
 
 	$errors = [];
 
@@ -41,7 +38,6 @@
 <?php
 
 	$users = $db->query("SELECT * FROM users")->fetchAll();
-
 
 ?>
 
