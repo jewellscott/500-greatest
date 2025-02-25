@@ -12,13 +12,31 @@ function clearForm() {
 }
 
 function initializeDatabase($database) {
+
+	$database->exec("PRAGMA foreign_keys = ON;");
+
+	// create album data here
+
 	$database->exec("CREATE TABLE IF NOT EXISTS users (
     	id INTEGER PRIMARY KEY AUTOINCREMENT,
     	email TEXT NOT NULL UNIQUE,
     	password TEXT NOT NULL,
     	created DATETIME DEFAULT (CURRENT_TIMESTAMP)
 	)");
+
+	$database->exec("CREATE TABLE IF NOT EXISTS reviews (
+    	id INTEGER PRIMARY KEY AUTOINCREMENT,
+    	user_id INTEGER NOT NULL,
+    	-- FOREIGN KEY (user_id) REFERENCES users(id),
+    	album_id TEXT NOT NULL,
+    	-- FOREIGN KEY (album_id) REFERENCES albums(id),
+    	rating INTEGER, 
+    	review TEXT,
+    	created DATETIME DEFAULT (CURRENT_TIMESTAMP)
+	)");
 }
+
+
 
 function validateUser($email, $password) {
 	$errors = [];
@@ -39,7 +57,6 @@ function showError($errors, $name) {
 		$message = $errors[$name];
 		return "<p class='error'>$message</p>";
 	}
-
 	return "";
 }
 
