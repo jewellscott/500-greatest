@@ -16,9 +16,9 @@
 
 		// var_dump($userReviews); 
 
-		$latestRating = array_reverse($userReviews)[0]["rating"];
+		$latestRating = array_reverse($userReviews)[0]["rating"] ?? null;
 
-		$latestReview = array_reverse($userReviews)[0]["review"];
+		$latestReview = array_reverse($userReviews)[0]["review"] ?? null;
 
 	?>
 

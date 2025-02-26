@@ -6,41 +6,48 @@
 
 	// in the future, it'll pull just from albums you HAVEN'T listened to
 
-	$albums = file_get_contents('data/albums.json');
-	$albums = json_decode($albums, true);
+	global $db;
 
-	function getRandomAlbum() {
+	// $albums = file_get_contents('data/albums.json');
+	// $albums = json_decode($albums, true);
 
-		// get all albums
-		// i had to initialize this stuff again... it wouldn't work otherwise
+	$albums = $db->query("SELECT * FROM albums")->fetchAll();
 
-			$albums = file_get_contents('data/albums.json');
-			$albums = json_decode($albums, true);
+	// $albums = file_get_contents('data/albums.json');
+	// $albums = json_decode($albums, true);
 
-		// get a random one
+	// $albums = $db->query("SELECT * FROM albums)")->fetchAll();
 
-		$key = array_rand($albums, 1);
+	// if it doesn't exist, generate one
+	$album = $_SESSION['random-album'] ?? getRandomUnratedAlbum();
 
-		$album = $albums[$key];
-
-		$_SESSION['random-album'] = $album;
-
-		return $album;
-	}
-
-	$album = $_SESSION['random-album'] ?? getRandomAlbum();
-
+	// get a new randomized album
 	if (isset($_POST['get-random'])) {
-		$_SESSION['random-album'] = null;
-		// i had to add this! couldn't just ovewrite it
-
-   	$album = getRandomAlbum();
-   	$_SESSION['random-album'] = $album;
+		getRandomUnratedAlbum();
    }
+
+   // if they review any album, not necesarily the randomized album
+   if (isset($_POST['create-review'])) {
+			$ratedAlbumId = $_POST['album_id']; // Get the album ID from the form
+    		$randomAlbumId = $_SESSION['random-album']['id'] ?? null;
+    		// get the randomized album id
+
+    		var_dump($ratedAlbumId);
+    		var_dump($randomAlbumId);
+
+    	if ($ratedAlbumId == $randomAlbumId) {
+
+    		getRandomUnratedAlbum();
+    
+    	}
+ 	}
+
+ 	// $TODO THIS KINDA WORKS BUT IS TEMPERMENTAL... MIGHT BE A SESSION THING
 
  ?>
 
  <random-album>
+
  	<?php include('templates/components/album-card/template.php'); ?>
 
  	<form method="POST" class="album-actions">
