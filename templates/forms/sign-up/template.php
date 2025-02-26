@@ -11,9 +11,10 @@
 
 	if ( postForm("create_user") ) {
 		$email = $_POST['email'];
+		$username = $_POST['username'];
 		$password = $_POST['password'];
 
-	    $errors = createUser($db, $email, $password);
+	    $errors = createUser($db, $email, $username, $password);
 
 	    if (empty($errors) ) {
 	        clearForm();
@@ -26,6 +27,9 @@
 	<form method="POST">
 		<label for="email">Email</label>
 		<input type="email" name="email" required>
+
+		<label for="username">Username</label>
+		<input type="text" name="username" required>
 
 		<label for="password">Password</label>
 		<input type="password" name="password" required>

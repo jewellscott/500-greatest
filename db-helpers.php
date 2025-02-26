@@ -13,13 +13,14 @@ function clearForm() {
 
 function initializeDatabase($database) {
 
-	$database->exec("PRAGMA foreign_keys = ON;");
+	// $database->exec("PRAGMA foreign_keys = ON;");
 
 	// create album data here
 
 	$database->exec("CREATE TABLE IF NOT EXISTS users (
     	id INTEGER PRIMARY KEY AUTOINCREMENT,
     	email TEXT NOT NULL UNIQUE,
+    	username TEXT NOT NULL UNIQUE,
     	password TEXT NOT NULL,
     	created DATETIME DEFAULT (CURRENT_TIMESTAMP)
 	)");
@@ -38,12 +39,17 @@ function initializeDatabase($database) {
 
 
 
-function validateUser($email, $password) {
+function validateUser($email, $username, $password) {
 	$errors = [];
 
 	if (empty($email)) {
 		$errors['email'] = "Please enter an email";
 	}
+
+	if (empty($username)) {
+		$errors['username'] = "Please enter an email";
+	}
+
 
 	if (empty($password)) {
     	$errors['password'] = "Please enter a password";
@@ -60,16 +66,16 @@ function showError($errors, $name) {
 	return "";
 }
 
-function createUser($db, $email, $password) {
+function createUser($db, $email, $username, $password) {
 
-	$errors = validateUser($email, $password);
+	$errors = validateUser($email, $username, $password);
 
 	if ( !empty($errors) ) {
 		return $errors;
 	}
 
     try {
-        $db->exec("INSERT INTO users (email, password, created) VALUES ('$email', '$password', CURRENT_TIMESTAMP)");
+        $db->exec("INSERT INTO users (email, username, password, created) VALUES ('$email', '$username', '$password', CURRENT_TIMESTAMP)");
         return []; // no errors means success, right?
     } catch (Exception $error) {
         return ['database' => "Database error: " . $error->getMessage()];

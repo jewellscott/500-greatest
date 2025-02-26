@@ -23,7 +23,7 @@
 
 	           			// var_dump($user);
 
-	           			echo($user["email"]);
+	           			echo($user["username"]);
 	           			// eventually this will be a component link to a user settings page
 
 	           		 ?>
