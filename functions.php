@@ -14,9 +14,12 @@ function getData($fileName) {
 
 function getRandomUnratedAlbum() {
 
-	 global $db;
+	$_SESSION['random-album'] = null;
+	// clear the session album
 
-	 $albums = $db->query("
+	global $db;
+
+	$albums = $db->query("
     SELECT * FROM albums 
     WHERE id NOT IN (
         SELECT album_id 
@@ -29,9 +32,6 @@ function getRandomUnratedAlbum() {
 		$album = $albums[$key];
 		// get a new album
 
-		$_SESSION['random-album'] = null;
-		// clear the session album
-		// i had to add this! couldn't just ovewrite it
 
    	$_SESSION['random-album'] = $album;
    	// set the session album again

@@ -33,6 +33,8 @@
         WHERE user_id == $_SESSION[user])")->fetchAll();
 
 	if (array_search($randomAlbum, $ratedAlbums)) {
+		echo ("the randomized album has already been rated! so something is glitched.");
+
 		getRandomUnratedAlbum();
 	}
 
