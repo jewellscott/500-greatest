@@ -75,7 +75,8 @@ function createUser($db, $email, $username, $password) {
 	}
 
     try {
-        $db->exec("INSERT INTO users (email, username, password, created) VALUES ('$email', '$username', '$password', CURRENT_TIMESTAMP)");
+        $signup = $db->prepare("INSERT INTO users (email, username, password, created) VALUES (?, ?, ?, CURRENT_TIMESTAMP)");
+        $signup->execute([$email, $username, $password]);
         return []; // no errors means success, right?
     } catch (Exception $error) {
         return ['database' => "Database error: " . $error->getMessage()];
@@ -89,5 +90,6 @@ function postForm($name) {
 }
 
 function createReview($db, $albumId, $userId, $rating, $review) {
-	$db->exec("INSERT INTO reviews (album_id, user_id, rating, review, created) VALUES ('$albumId', '$userId', '$rating', '$review', CURRENT_TIMESTAMP)");
+	$stmt = $db->prepare("INSERT INTO reviews (album_id, user_id, rating, review, created) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)");
+	$stmt->execute([$albumId, $userId, $rating, $review]);
 }

@@ -19,8 +19,7 @@ function getRandomUnratedAlbum() {
 
 	global $db;
 
-	$albums = $db->query("
-    SELECT * FROM albums 
+	$albums = $db->query("    SELECT * FROM albums 
     WHERE id NOT IN (
         SELECT album_id 
         FROM reviews 
@@ -36,5 +35,25 @@ function getRandomUnratedAlbum() {
    	$_SESSION['random-album'] = $album;
    	// set the session album again
 
-		return $album;
-	}
+	return $album;
+}
+
+
+function getUserReviewsWithAlbums($db, $userId) {
+    $stmt = $db->prepare("
+    	SELECT 
+        reviews.*, 
+        albums.*
+        -- albums.rank AS rank,
+        -- albums.title AS title,
+        -- albums.artist AS artist, 
+        -- albums.year AS year,
+        -- albums.coverUrl AS coverUrl
+      FROM reviews
+      JOIN albums ON reviews.album_id = albums.id
+      WHERE reviews.user_id = ?
+      ORDER BY reviews.created ASC");
+
+    $stmt->execute([$userId]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC); // Fetch all as associative array
+}
