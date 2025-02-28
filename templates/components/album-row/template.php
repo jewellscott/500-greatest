@@ -17,16 +17,19 @@
 
 		<listening-stats>
 			<p>#<?=$rank?></p>
-			<p>February 24, 2025</p>
+			<p><?=$album["created"]?></p>
 		</listening-stats>
 	
 		<h2 class="rank"><?=$rank?></h2>
 		<h2 class="title"><?=$album["title"]?></h2>
 		<h3 class="artist"><?=$album["artist"]?></h3>
 		<h4 class="year"><?=$album["year"]?></h4>
-		<p class="rating">⭐️⭐️⭐️⭐️⭐️</p>
-		<p class="review">Review (link)</p>
-
+		<review-stats>
+			<p><?=$album["rating"]?></p>
+			<?php if ($album["review"] != NULL) { ?>
+				<p><a href="#">Review</a></p>
+			<?php } ?>
+		</review-stats>
 	</a>
 
 </album-row>
