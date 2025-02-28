@@ -12,14 +12,15 @@ function getData($fileName) {
 }
 
 
-function getRandomUnratedAlbum() {
+function setRandomUnratedAlbum() {
 
 	$_SESSION['random-album'] = null;
 	// clear the session album
 
 	global $db;
 
-	$albums = $db->query("    SELECT * FROM albums 
+	$albums = $db->query("
+    SELECT * FROM albums 
     WHERE id NOT IN (
         SELECT album_id 
         FROM reviews 

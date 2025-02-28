@@ -10,6 +10,8 @@
 			$review = $_POST["review"];
 
 			createReview($db, $albumId, $userId, $rating, $review);
+
+			// header("Location: " . $_SERVER['PHP_SELF']);
 		}
 
 		$userReviews = $db->query("SELECT * FROM reviews WHERE user_id == $user[id] AND album_id == '$this_album[id]'")->fetchAll();

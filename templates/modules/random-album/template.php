@@ -19,7 +19,7 @@
 	// $albums = $db->query("SELECT * FROM albums)")->fetchAll();
 
 	// if it doesn't exist, generate one
-	$album = $_SESSION['random-album'] ?? getRandomUnratedAlbum();
+	$album = $_SESSION['random-album'] ?? setRandomUnratedAlbum();
 
 	// if the the session album is in the rated array history for the user, randomize the album
 
@@ -35,14 +35,16 @@
 	if (array_search($randomAlbum, $ratedAlbums)) {
 		echo ("the randomized album has already been rated! so something is glitched.");
 
-		getRandomUnratedAlbum();
+		setRandomUnratedAlbum();
 	}
 
 	// THIS IS WORKING BUT I HAVE TO REFRESH THE PAGE... CACHING ISSUE? IDK
 
 	// if you click the button, get a new randomized album 
 	if (isset($_POST['get-random'])) {
-		getRandomUnratedAlbum();
+		setRandomUnratedAlbum();
+		// header("Location: ?page=home");
+        // exit();
    }
 
    // if they review any album, not necesarily the randomized album
@@ -51,12 +53,15 @@
     		$randomAlbumId = $_SESSION['random-album']['id'] ?? null;
     		// get the randomized album id
 
-    		var_dump($ratedAlbumId);
-    		var_dump($randomAlbumId);
+    		// var_dump($ratedAlbumId);
+    		// var_dump($randomAlbumId);
 
     	if ($ratedAlbumId == $randomAlbumId) {
 
-    		getRandomUnratedAlbum();
+    		setRandomUnratedAlbum();
+
+    		// header("Location: ?page=home");
+        	// exit();
     
     	}
  	}
