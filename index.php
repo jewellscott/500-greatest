@@ -9,6 +9,10 @@
 	$db = getDatabaseConnection();
 	initializeDatabase($db);
 
+	// seedUsers($db, $faker, 200);
+	// seedReviews($db, $faker, 100);
+
+
  ?>
 
 <html lang="en">

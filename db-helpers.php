@@ -1,5 +1,54 @@
 <?php
 
+// declare(strict_types=1);
+
+require_once 'vendor/autoload.php';
+// use the factory to create a Faker\Generator instance
+$faker = Faker\Factory::create();
+
+function seedUsers($db, $faker, $fakeCount) {
+	for ($i = 0; $i < $fakeCount; $i++) {
+		$email = $faker->unique()->safeEmail();
+		$username = $faker->unique()->userName();
+        $password = password_hash('password', PASSWORD_DEFAULT);
+
+
+		// insert into database // fix with prepared statements?!
+		$query = "INSERT INTO users (email, username, password) VALUES ('$email', '$username', '$password')";
+            $result = $db->exec($query);
+	}
+}
+
+function seedReviews($db, $faker, $fakeCount) {
+
+	// count existing users so we can use the (incrementing user ids)
+    $uStmt = $db->query("SELECT COUNT(*) FROM users");
+    $userCount = $uStmt->fetchColumn();
+
+    if ($userCount == 0) {
+    	// do nothing
+        return;
+    }
+    
+    // get the album ideas from the id column in the albums table
+    $aStmt = $db->query("SELECT id FROM albums");
+    // $albumIds = $aStmt->fetchAll();
+    $albumIds = array_column($aStmt->fetchAll(PDO::FETCH_ASSOC), 'id');
+
+    // add fake reviews
+    for ($i = 0; $i < $fakeCount; $i++) {
+        $userId = $faker->numberBetween(1, $userCount);
+        $albumId = $faker->randomElement($albumIds);
+        $rating = $faker->numberBetween(1, 5);
+        $review = $faker->paragraph();
+
+        // complains about string to array conversion
+    	$rStmt = $db->prepare("INSERT INTO reviews (album_id, user_id, rating, review, created) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)");
+		$rStmt->execute([$albumId, $userId, $rating, $review]);
+    }
+}
+
+
 function getDatabaseConnection() {
     $db = new PDO('sqlite:db.sqlite');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
