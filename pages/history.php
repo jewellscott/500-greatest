@@ -34,4 +34,23 @@ global $db;
 
 <h1>History</h1>
 
+<album-row class="history-sort">  
+	<picture>
+	</picture>
+
+	<listening-stats>
+		<!-- <p>#NUM</p> -->
+		<p>DATE</p>
+	</listening-stats>
+
+	<h2 class="rank">RANK</h2>
+	<h2 class="title">TITLE</a></h2>
+	<h3 class="artist">ARTIST</h3>
+	<h4 class="year">YEAR</h4>
+	<review-stats>
+		<p>RATING</p>
+	</review-stats>
+
+</album-row>
+
 <?php include('templates/views/album-list/template.php'); ?>

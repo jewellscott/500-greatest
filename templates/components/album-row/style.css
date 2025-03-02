@@ -1,17 +1,28 @@
 album-row {
-	a {
 
-		img {
-			max-width: 100px;
-		}
-
-		display: flex;
-		gap: 2rem;
-		padding: .5rem;
-
-		align-items: center;
-		justify-content: space-between;
+	listening-stats, .rank, .year {
+		display: none;
 	}
+
+	
+	img {
+		max-width: 100px;
+	}
+
+	display: flex;
+	gap: 2rem;
+	padding: .5rem;
+
+	align-items: center;
+	justify-content: space-between;
+
+
+	review-stats {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+	}
+
 
 
 	h2, h3, h4 {
@@ -24,4 +35,14 @@ album-row {
 	}
 
 	text-align: center;
+}
+
+
+@media (width > 800px) {
+	album-row {
+
+		listening-stats, .rank, .year {
+			display: unset;
+		}
+	}
 }
