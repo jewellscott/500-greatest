@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
-<?php require('router.php'); ?>
 <?php require('functions.php'); ?>
+<?php require('router.php'); ?>
 <?php require('db-helpers.php'); ?>
 
 <?php 

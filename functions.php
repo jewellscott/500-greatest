@@ -14,7 +14,7 @@ function getData($fileName) {
 
 function initializeUser() {
     $_SESSION['user'] = [
-        'id' => 29,
+        'id' => 1,
         'random-album' => NULL
    ];
 
@@ -22,7 +22,7 @@ function initializeUser() {
 }
 
 function setRandomUnratedAlbum() {
-    echo "SET RANDOM UNRATED IS BEING CALLED";
+    // echo "SET RANDOM UNRATED IS BEING CALLED";
 
 	$_SESSION['user']['random-album'] = NULL;
 	// clear the session album
