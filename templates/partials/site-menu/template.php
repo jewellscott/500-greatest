@@ -20,7 +20,8 @@
 
 		<nav class="user-menu">
 			<a href="?page=history" class="history <?php if ($page == 'history') {echo 'active';} ?>">History</a>
-			<a href="?page=stats" class="stats <?php if ($page == 'stats') {echo 'active';} ?>">Stats</a>
+			<a href="?page=my-stats" class="my-stats <?php if ($page == 'my-stats') {echo 'active';} ?>">My Stats</a>
+			<a href="?page=global-stats" class="global-stats <?php if ($page == 'global-stats') {echo 'active';} ?>">Global Stats</a>
 		</nav>
 	</nav>
 </site-menu>

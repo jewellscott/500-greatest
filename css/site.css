@@ -49,7 +49,7 @@ header a.site-logo {
 		align-items: center;
 	}
 
-	.rs-500, .nav-label, .history, .stats {
+	.rs-500, .nav-label, .history, .my-stats, .global-stats {
 		font-weight: 700;
 	}
 
