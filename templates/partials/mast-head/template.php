@@ -13,17 +13,20 @@
             <?php // } ?>
 
 	           <user-login>
+
 	           <?php if ($isLoggedIn) {?>
 	           	<a href="#" class="user-settings">
 	           		<?php 
 
-	           			// $user = $db->query("
-	           			// 	SELECT * FROM users 
-	           			// 	WHERE id == $_SESSION[user][id]")->fetch();
+	           			$userId = $_SESSION["user"]["id"];
+
+	           			$user = $db->query("
+	           				SELECT * FROM users 
+	           				WHERE id = $userId")->fetch();
 
 	           			// var_dump($user);
 
-	           			// echo($user["username"]);
+	           			echo($user["username"]);
 	           			// eventually this will be a component link to a user settings page
 
 	           			// echo($_SESSION['random-album']["title"]);
