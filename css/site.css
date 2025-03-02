@@ -6,6 +6,14 @@
 @import 'components.css';
 @import 'modules.css';
 
+user-login {
+	display: grid;
+	gap: 20px;
+	a.user-settings {
+		font-weight: bold;
+	}
+
+}
 
 
 header a.site-logo {

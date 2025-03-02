@@ -1,7 +1,12 @@
 	<?php 
 
-		global $user; 
 		global $db; 
+		// global $user; 
+		// var_dump($user);
+
+		$userId = $_SESSION["user"]["id"];
+		var_dump($userId);
+
 
 		if (isset($_POST["create_review"])) {
 			$albumId = $_POST["album_id"];
@@ -14,7 +19,9 @@
 			// header("Location: " . $_SERVER['PHP_SELF']);
 		}
 
-		$userReviews = $db->query("SELECT * FROM reviews WHERE user_id == $user[id] AND album_id == '$this_album[id]'")->fetchAll();
+		$userId =  $_SESSION['user']['id'];
+
+		$userReviews = $db->query("SELECT * FROM reviews WHERE user_id == $userId AND album_id == '$this_album[id]'")->fetchAll();
 
 		// var_dump($userReviews); 
 
@@ -49,7 +56,7 @@
  
 			<form class="rating-review" method="POST">
 				<input type="hidden" name="album_id" value="<?=$this_album["id"];?>">
-				<input type="hidden" name="user_id" value="<?=$user["id"]?>">
+				<input type="hidden" name="user_id" value="<?=$userId?>">
 
 				<album-rating>
 					<label for="rating">Album Rating</label>

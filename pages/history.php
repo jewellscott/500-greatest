@@ -24,11 +24,11 @@ global $db;
 	 // the timestamp is not pulling the current timestamp, just the timestamp for when the function is created
 	 // once it's correct, it needs to be sorted by the date/timestamp
 
-	
-	// Example usage
-	$albums = getUserReviewsWithAlbums($db, 1);
+	$userId =  $_SESSION['user']['id'];
 
-	var_dump($albums[0]);
+	$albums = getUserReviewsWithAlbums($db, $userId);
+
+	// var_dump($albums[0]);
 
 ?>
 

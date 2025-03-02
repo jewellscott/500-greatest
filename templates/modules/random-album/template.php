@@ -19,18 +19,20 @@
 	// $albums = $db->query("SELECT * FROM albums)")->fetchAll();
 
 	// if it doesn't exist, generate one
-	$album = $_SESSION['random-album'] ?? setRandomUnratedAlbum();
+	$album = $_SESSION['user']['random-album'] ?? setRandomUnratedAlbum();
 
 	// if the the session album is in the rated array history for the user, randomize the album
 
-	$randomAlbum = $_SESSION['random-album'] ?? null;
+	$userId =  $_SESSION['user']['id'];
+
+	$randomAlbum = $_SESSION['user']['random-album'] ?? null;
 
 	$ratedAlbums = $db->query("
     SELECT * FROM albums 
     WHERE id IN (
         SELECT album_id 
         FROM reviews 
-        WHERE user_id == $_SESSION[user])")->fetchAll();
+        WHERE user_id = $userId)")->fetchAll();
 
 	if (array_search($randomAlbum, $ratedAlbums)) {
 		echo ("the randomized album has already been rated! so something is glitched.");
@@ -50,7 +52,7 @@
    // if they review any album, not necesarily the randomized album
    if (isset($_POST['create-review'])) {
 			$ratedAlbumId = $_POST['album_id']; // Get the album ID from the form
-    		$randomAlbumId = $_SESSION['random-album']['id'] ?? null;
+    		$randomAlbumId = $_SESSION['user']['random-album']['id'] ?? null;
     		// get the randomized album id
 
     		// var_dump($ratedAlbumId);

@@ -6,18 +6,19 @@
 
 <?php if ($isLoggedIn) {
 
+	$userId =  $_SESSION['user']['id'];
 
-		$user = $db->query("
+	$user = $db->query("
 			SELECT * FROM users 
-			WHERE id == $_SESSION[user]")->fetch();
+			WHERE id = $userId")->fetch();
 
 
-	 $ratedAlbums = $db->query("
+	$ratedAlbums = $db->query("
     SELECT * FROM albums 
     WHERE id IN (
         SELECT album_id 
         FROM reviews 
-        WHERE user_id == $_SESSION[user])")->fetchAll();
+        WHERE user_id = $userId)")->fetchAll();
 
 	 $percentageCompleted = count($ratedAlbums) / 500;
 	 $completed = count($ratedAlbums);
@@ -32,7 +33,6 @@
 	<!-- <p>You have listened to  <?=$percentageCompleted?>% of the albums.</p> -->
 
 	<p>You have listened to <?=$completed?> out of 500 albums.</p>
-
 
 	<?php include('templates/modules/random-album/template.php'); ?>
 

@@ -14,18 +14,20 @@ function getData($fileName) {
 
 function setRandomUnratedAlbum() {
 
-	$_SESSION['random-album'] = null;
+	$_SESSION['user']['random-album'] = NULL;
 	// clear the session album
 
 	global $db;
+
+    $userId =  $_SESSION['user']['id'];
+
 
 	$albums = $db->query("
     SELECT * FROM albums 
     WHERE id NOT IN (
         SELECT album_id 
         FROM reviews 
-        WHERE user_id == $_SESSION[user])")->fetchAll();
-
+        WHERE user_id = $userId)")->fetchAll();
 
 		$key = array_rand($albums, 1);
 
@@ -33,7 +35,7 @@ function setRandomUnratedAlbum() {
 		// get a new album
 
 
-   	$_SESSION['random-album'] = $album;
+   	$_SESSION['user']['random-album'] = $album;
    	// set the session album again
 
 	return $album;

@@ -5,6 +5,14 @@
 
 	session_start();
 
+	global $db;
+
+	// a way to randomly change users 
+
+	// $_SESSION["user"] = 30;
+
+	// var_dump($_SESSION['user']);
+
 	$isLoggedIn = $_SESSION['isLoggedIn'] ?? false;
 
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -12,13 +20,20 @@
 	        $_SESSION['isLoggedIn'] = true;
 	        $isLoggedIn = true;
 
+	        // $_SESSION["user"] = 0;
 
+	        // reworking the session user to be a whole object
 
-	        $_SESSION["user"] = 1;
+	        $_SESSION['user'] = [
+		        'id' => 30,
+		        'random-album' => NULL
+		    ];
 
-  				$user = $db->query("
+		    $userId = $_SESSION["user"]["id"];
+
+	       $user = $db->query("
   				SELECT * FROM users 
-  				WHERE id == $_SESSION[user]")->fetch();
+  				WHERE id = $userId")->fetch();
 
         	  header("Location: ?page=home");
         	  exit();
