@@ -70,9 +70,9 @@ function getUserStats($db, $userId) {
 		SELECT artist, COUNT(*) AS frequency
    	FROM reviews 
    	JOIN albums ON reviews.album_id = albums.id
-   	WHERE user_id = ? AND rating >= 4.5
+   	WHERE user_id = ? AND rating = 5
    	GROUP BY artist
-		ORDER BY created ASC
+		ORDER BY frequency DESC
 		LIMIT 10;");
 	$stmt->execute([$userId]);
 	$userStats['topArtists'] = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
@@ -84,7 +84,8 @@ function getUserStats($db, $userId) {
    	FROM albums 
    	JOIN reviews ON albums.id = reviews.album_id
    	WHERE user_id = ? AND rating = 5
-		LIMIT 10;");
+   	ORDER BY rank ASC
+		LIMIT 100;");
 	$stmt->execute([$userId]);
 	$userStats['topAlbums'] = $stmt->fetchAll();
 
@@ -174,7 +175,8 @@ function getGlobalStats($db) {
    	FROM albums 
    	JOIN reviews ON albums.id = reviews.album_id
    	WHERE rating >= 4.5
-		LIMIT 20;");
+   	ORDER BY rating DESC
+		LIMIT 20;"); 
 	$globalStats['topAlbums'] = $stmt->fetchAll();
 // maybe edit this to add a rating so i can
 

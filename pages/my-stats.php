@@ -35,11 +35,10 @@ just loop through all of the attributes of a huge user stats object
 			<li><?=$genre?></li>
 		<?php } ?>
 	</ul>
-		<li>topArtists:</li>
+		<!-- <li>topArtists:</li> -->
 	<ul>
-		<?php foreach($topArtists as $artist) { ?>
-			<li><?=$artist?></li>
-		<?php } ?>
+		<?php //foreach($topArtists as $artist) { ?>
+		<?php //} ?>
 	</ul>
 	<li>topAlbums:</li>
 	<?php include('templates/views/album-grid/template.php'); ?>

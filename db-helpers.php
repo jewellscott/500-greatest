@@ -39,8 +39,8 @@ function seedReviews($db, $faker, $fakeCount) {
     for ($i = 0; $i < $fakeCount; $i++) {
         $userId = $faker->numberBetween(1, $userCount);
         $albumId = $faker->randomElement($albumIds);
-        $rating = $faker->numberBetween(1, 5);
-        $review = $faker->paragraph();
+        $rating = $faker->numberBetween(3, 5);
+		$review = $faker->boolean(50) ? $faker->paragraph() : null; 
 
         // complains about string to array conversion
     	$rStmt = $db->prepare("INSERT INTO reviews (album_id, user_id, rating, review, created) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)");
