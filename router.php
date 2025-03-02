@@ -9,7 +9,7 @@
 
 	// a way to randomly change users 
 
-	// $_SESSION["user"] = 30;
+	// initializeUser();
 
 	// var_dump($_SESSION['user']);
 
@@ -24,10 +24,11 @@
 
 	        // reworking the session user to be a whole object
 
-	        $_SESSION['user'] = [
-		        'id' => 30,
-		        'random-album' => NULL
-		    ];
+	       //  $_SESSION['user'] = [
+		    //     'id' => 1,
+		    // ];
+
+	       initializeUser();
 
 		    $userId = $_SESSION["user"]["id"];
 

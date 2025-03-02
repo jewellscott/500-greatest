@@ -17,9 +17,20 @@
 	// $albums = json_decode($albums, true);
 
 	// $albums = $db->query("SELECT * FROM albums)")->fetchAll();
+	// var_dump("user object: " , $_SESSION['user']);
+	// this says random album isn't being set.
+
+	// var_dump($_SESSION['user']['random-album']);
 
 	// if it doesn't exist, generate one
 	$album = $_SESSION['user']['random-album'] ?? setRandomUnratedAlbum();
+
+	// if (array_key_exists('random-album', $_SESSION['user'])) {
+	// 	echo("ughhhh");
+	// 	$album = $_SESSION['user']['random-album'];
+	// } else {
+	// 	$album = setRandomUnratedAlbum();
+	// }
 
 	// if the the session album is in the rated array history for the user, randomize the album
 
@@ -43,6 +54,7 @@
 	// THIS IS WORKING BUT I HAVE TO REFRESH THE PAGE... CACHING ISSUE? IDK
 
 	// if you click the button, get a new randomized album 
+
 	if (isset($_POST['get-random'])) {
 		setRandomUnratedAlbum();
 		// header("Location: ?page=home");
