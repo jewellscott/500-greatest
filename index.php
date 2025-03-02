@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 
-<?php require('functions.php'); ?>
-<?php require('router.php'); ?>
 <?php require('db-helpers.php'); ?>
-<?php require('stats.php'); ?>
 
 <?php 
 
@@ -12,9 +9,12 @@
 
 	// seedUsers($db, $faker, 200);
 	// seedReviews($db, $faker, 100);
-
-
  ?>
+
+<?php require('functions.php'); ?>
+<?php require('router.php'); ?>
+ <?php require('stats.php'); ?>
+
 
 <html lang="en">
 <head>
