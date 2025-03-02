@@ -8,10 +8,6 @@
 			SELECT * FROM users 
 			WHERE id = $userId")->fetch();
 
-    
-
-
-
    $userStats = getUserStats($db, $userId);
 
 	$listenedCount = $userStats["listenedCount"];
@@ -20,8 +16,7 @@
 	$topDecade = $userStats["topDecade"];
 	$topGenres = $userStats["topGenres"];
 	$topArtists = $userStats["topArtists"];
-	$topAlbums = $userStats["topAlbums"];
-
+	$albums = $userStats["topAlbums"];
 
  ?>
 
@@ -47,9 +42,5 @@ just loop through all of the attributes of a huge user stats object
 		<?php } ?>
 	</ul>
 	<li>topAlbums:</li>
-	<ul>
-		<?php foreach($topAlbums as $album) { 
-			 include('..templates/components/album-card');
-		 } ?>
-	</ul>
+	<?php include('templates/views/album-grid/template.php'); ?>
 </ul>
