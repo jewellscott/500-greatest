@@ -24,7 +24,7 @@
 
 just loop through all of the attributes of a huge user stats object
 
-<ul>
+<ul class="user-stats">
 	<li>listenedCount: <?=$listenedCount?></li>
 	<li>percentComplete: <?=$percentageComplete?></li>
 	<li>averageRating: <?=$averageRating?></li>
@@ -44,3 +44,10 @@ just loop through all of the attributes of a huge user stats object
 	<li>topAlbums:</li>
 	<?php include('templates/views/album-grid/template.php'); ?>
 </ul>
+
+<style>
+	.user-stats {
+		display: grid;
+		gap: 20px;
+	}
+</style>

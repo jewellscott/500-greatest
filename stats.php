@@ -33,7 +33,7 @@ function getUserStats($db, $userId) {
 
    // averageRating
 
-   $stmt = $db->prepare("SELECT AVG(rating) FROM reviews WHERE user_id = ?");
+   $stmt = $db->prepare("SELECT ROUND(AVG(rating), 2) FROM reviews WHERE user_id = ?");
 	$stmt->execute([$userId]);
 	$userStats['averageRating'] = $stmt->fetchColumn();
 
@@ -52,8 +52,6 @@ function getUserStats($db, $userId) {
 	");
 	$stmt->execute([$userId]);
 	$userStats['topDecade'] = $stmt->fetchColumn();
-	// is not actually returning the top decade
-	// rounding error that I don't know how to fix
 
    // topGenres
 
@@ -96,7 +94,4 @@ function getUserStats($db, $userId) {
 	return $userStats;
 }
 
-// $userStats = getUserStats($db, $userId);
-
-// $listenedCount = $userStats["listenedCount"];
 
