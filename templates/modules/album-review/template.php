@@ -60,7 +60,7 @@
 
 				<album-rating>
 					<label for="rating">Album Rating</label>
-  					<input type="range" id="rating" name="rating" min="0" max="5" step=".5" value="<?=$latestRating?>">
+  					<input type="range" id="rating" name="rating" min="1" max="5" step=".5" value="<?=$latestRating?>">
 				</album-rating>
 				<album-review>
 					<label for="review">Album Review</label>
