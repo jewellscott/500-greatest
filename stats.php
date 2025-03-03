@@ -137,24 +137,26 @@ function getGlobalStats($db) {
 		SELECT FLOOR(year / 10) * 10 AS decade, COUNT(*) AS count
 	  	FROM reviews
 	    JOIN albums ON reviews.album_id = albums.id
-	    WHERE rating >= 5
+	    WHERE rating >= 4.5
 	    GROUP BY decade
 	    ORDER BY count DESC
 	    LIMIT 1;
 	");
 	$globalStats['topDecade'] = $stmt->fetchColumn();
+	// not convinced this one is right either. boo.
 
 	// topGenres
 
-	 $stmt = $db->query("
-		SELECT genre, COUNT(*) AS frequency
-   	FROM reviews 
-   	JOIN albums ON reviews.album_id = albums.id
-   	WHERE rating >= 5
-   	GROUP BY genre
-		ORDER BY frequency DESC
-		LIMIT 3;");
+		$stmt = $db->query("
+	    SELECT genre
+	    FROM reviews 
+	    JOIN albums ON reviews.album_id = albums.id
+	    WHERE rating >= 4.75
+	    GROUP BY genre
+	    ORDER BY AVG(rating) ASC
+	    LIMIT 3;");
 	$globalStats['topGenres'] = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
+
 
 // topArtists
 
@@ -164,9 +166,11 @@ function getGlobalStats($db) {
    	JOIN albums ON reviews.album_id = albums.id
    	WHERE rating >= 4.5
    	GROUP BY artist
-		ORDER BY created ASC
-		LIMIT 10;");
+		ORDER BY rating asc
+		LIMIT 5;");
 	$globalStats['topArtists'] = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
+
+	// something isn't right with this one
 
 // topAlbums 
 
@@ -174,11 +178,12 @@ function getGlobalStats($db) {
 		SELECT * 
    	FROM albums 
    	JOIN reviews ON albums.id = reviews.album_id
-   	WHERE rating >= 4.5
+   	WHERE rating >= 4.75
    	ORDER BY rating DESC
 		LIMIT 20;"); 
 	$globalStats['topAlbums'] = $stmt->fetchAll();
-// maybe edit this to add a rating so i can
+// maybe edit this to add a rating so i can see it instead of the ranking
+	// also something is wrong with this one too.. yay.
 
 	return $globalStats;
 }
