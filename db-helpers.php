@@ -35,11 +35,20 @@ function seedReviews($db, $faker, $fakeCount) {
     // $albumIds = $aStmt->fetchAll();
     $albumIds = array_column($aStmt->fetchAll(PDO::FETCH_ASSOC), 'id');
 
+
     // add fake reviews
     for ($i = 0; $i < $fakeCount; $i++) {
+
         $userId = $faker->numberBetween(1, $userCount);
         $albumId = $faker->randomElement($albumIds);
-        $rating = $faker->numberBetween(3, 5);
+		$rating = $faker->randomElement([
+		    1, 1.5, 
+		    2, 2, 2.5, 2.5, 
+		    3, 3, 3, 3.5, 3.5, 3.5, 
+		    4, 4, 4, 4.5, 4.5, 4.5,
+		    5, 5, 5, 5
+		]);
+		// trying to do some biased seeding idk
 		$review = $faker->boolean(50) ? $faker->paragraph() : null; 
 
         // complains about string to array conversion
