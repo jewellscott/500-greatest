@@ -1,3 +1,18 @@
+	<?php 
+
+		global $db;
+
+		$globalReviews = $db->query("
+			SELECT reviews.*, users.username
+			FROM reviews
+			JOIN users ON reviews.user_id = users.id
+			WHERE album_id == '$this_album[id]'
+			AND review IS NOT NULL")->fetchAll();
+
+		// var_dump($globalReviews[0]);
+
+	 ?>
+
 	<album-detail>
 		<?php if (isset($this_album["rank"])) {?>
 			<span class="rank"><?=padRanking($this_album["rank"]);?></span>
@@ -24,4 +39,47 @@
 				</album-description>
 			</div>
 		</album-content>
+
+		<album-stats>
+
+			will have some general album stats
+
+		</album-stats>
+
+		<album-reviews>
+
+			global reviews from users
+
+			<?php foreach ($globalReviews as $review) { ?>
+
+				<?php 	
+					$timestamp = strtotime($review['created']);
+					$dateReviewed = date('F j, Y', $timestamp);
+ 				?>
+				<!-- will be its own module -->
+				<global-review>
+					<ul>
+						<li><a href="#"><?=$review['username']?></a></li>
+						<li>RATING: <?=$review['rating']?></li>
+						<li>REVIEW: <?=$review['review']?></li>
+						<li>DATE: <?=$dateReviewed?></li>
+					</ul>
+				</global-review>
+			<?php } ?> 
+		</album-reviews>
 	</album-detail>
+
+	<style>
+		album-content, album-stats, album-reviews {
+			margin-bottom: 4rem;
+		}
+
+		album-reviews {
+			display: grid;
+			gap: 20px;
+			a {
+				font-weight: bold;
+				color: blue;
+			}
+		}
+	</style>

@@ -23,12 +23,6 @@
 
 		$userReviews = $db->query("SELECT * FROM reviews WHERE user_id == $userId AND album_id == '$this_album[id]'")->fetchAll();
 
-		// var_dump($userReviews); 
-
-		$latestRating = array_reverse($userReviews)[0]["rating"] ?? null;
-
-		$latestReview = array_reverse($userReviews)[0]["review"] ?? null;
-
 	?>
 
 
@@ -53,6 +47,8 @@
 					</h2>
 				<h3 class="year"><?=$this_album["year"];?></h3>
 			</album-stats>
+
+			<?php if (empty($userReviews)) { ?>
  
 			<form class="rating-review" method="POST">
 				<input type="hidden" name="album_id" value="<?=$this_album["id"];?>">
@@ -60,19 +56,21 @@
 
 				<album-rating>
 					<label for="rating">Album Rating</label>
-  					<input type="range" id="rating" name="rating" min="1" max="5" step=".5" value="<?=$latestRating?>">
+  					<input type="range" id="rating" name="rating" min="1" max="5" step=".5">
 				</album-rating>
 				<album-review>
 					<label for="review">Album Review</label>
-					<textarea id="review" name="review" rows="10"><?=$latestReview?></textarea>
-					<!-- $TODO == RIGHT NOW THERE IS AN ERROR WITH ENCODING SPECIAL CHARACTERS....  -->
-					<!-- $TODO == NEED SOME KIND OF ANIMATION OR SOMETHING TO PROVE THAT THE DATA WAS SAVED, EVEN IF IT STAYS ON THE SAME PAGE  -->
-
+					<textarea id="review" name="review" rows="10"></textarea>
 				</album-review>
 				<form-actions>
 					<button name="create_review">Save</button>
 				</form-actions>
 			</form>
+		<?php } else { 
+
+			include('templates/components/user-review/template.php');
+			
+		 } ?>
 		</div>
 	</album-content>
 </album-review>

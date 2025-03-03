@@ -5,6 +5,8 @@
 
 @import '../templates/components/album-card/style.css';
 @import '../templates/components/album-row/style.css';
+@import '../templates/components/user-review/style.css';
+@import '../templates/components/global-review/style.css';
 
 @import '../templates/forms/sign-up/style.css';
 @import '../templates/forms/login/style.css';

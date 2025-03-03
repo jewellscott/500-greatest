@@ -29,7 +29,7 @@
 	<review-stats>
 		<p><?=$album["rating"]?></p>
 		<?php if ($album["review"] != NULL) { ?>
-			<p><a href="#">Review</a></p>
+			<p><a href='?page=review&album=<?=$album["id"]?>'>Review</a></p>
 		<?php } ?>
 	</review-stats>
 
