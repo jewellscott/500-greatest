@@ -57,8 +57,8 @@
 
 	if (isset($_POST['get-random'])) {
 		setRandomUnratedAlbum();
-		// header("Location: ?page=home");
-        // exit();
+		header("Location: ?page=home");
+        exit();
    }
 
    // if they review any album, not necesarily the randomized album
