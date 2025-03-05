@@ -7,7 +7,8 @@
 			FROM reviews
 			JOIN users ON reviews.user_id = users.id
 			WHERE album_id == '$this_album[id]'
-			AND review IS NOT NULL")->fetchAll();
+			AND review IS NOT NULL 
+			AND review IS NOT ''")->fetchAll();
 
 		// var_dump($globalReviews[0]);
 
